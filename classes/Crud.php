@@ -84,7 +84,16 @@ class Crud{
             
         }
 
-
+    public function delete($id){
+        $query = "DELETE FROM " . $this->table_name. " where id= ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(1, $id);
+        if($stmt->execute()){
+            return true;
+            }else{
+                return false;
+            }
+        }
 
     }
 
